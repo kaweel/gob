@@ -1,4 +1,4 @@
-module github.com/kaweel/gob-cli
+module github.com/kaweel/gob
 
 go 1.24.4
 

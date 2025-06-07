@@ -9,10 +9,10 @@
     "node": ">= 14.0.0",
     "npm": ">= 6.0.0"
   },
-  "homepage": "https://github.com/kaweel/gob-cli",
+  "homepage": "https://github.com/kaweel/gob",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaweel/gob-cli.git"
+    "url": "https://github.com/kaweel/gob.git"
   },
   "bugs": "",
   "keywords": [],
