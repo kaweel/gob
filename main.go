@@ -1,6 +1,6 @@
 package main
 
-import "github.com/kaweel/gob-cli/app/cmd"
+import "github.com/kaweel/gob-cli/cmd"
 
 func main() {
 	cmd.Execute()
