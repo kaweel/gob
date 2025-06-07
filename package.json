@@ -1,0 +1,34 @@
+{
+  "name": "gob-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "AGPL-version-3.0",
+  "private": false,
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "homepage": "https://github.com/kaweel/gob-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kaweel/gob-cli.git"
+  },
+  "bugs": "",
+  "keywords": [],
+  "author": {
+    "name": "Kaweel",
+    "email": "lert@gmail.com"
+  },
+  "contributors": [],
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "",
+    "test": ""
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1"
+  }
+}

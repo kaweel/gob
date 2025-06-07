@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+cd app
+
+go fmt ./...
+go vet ./...
+go test ./...
+
+#exit 1
