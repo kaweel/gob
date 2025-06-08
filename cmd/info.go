@@ -9,17 +9,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var infoName string
-
 var info = &cobra.Command{
 	Use:   "info",
 	Short: "Show template info",
+	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		root, err := loadTemplateRoot()
 		if err != nil {
 			return err
 		}
-		cfgPath := filepath.Join(root, infoName+".json")
+		name := args[0]
+		cfgPath := filepath.Join(root, name+".json")
 		b, err := os.ReadFile(cfgPath)
 		if err != nil {
 			return err
@@ -32,12 +32,7 @@ var info = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		fmt.Printf("%s : %s\n", infoName, string(infoContent))
+		fmt.Printf("%s : %s\n", name, string(infoContent))
 		return nil
 	},
-}
-
-func init() {
-	info.Flags().StringVar(&infoName, "name", "", "template name")
-	info.MarkFlagRequired("name")
 }
