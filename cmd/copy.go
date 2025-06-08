@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var copyCmd = &cobra.Command{
+var copy = &cobra.Command{
 	Use:   "copy",
 	Short: "Copy a project template and push to a new repository",
 	Run: func(cmd *cobra.Command, args []string) {

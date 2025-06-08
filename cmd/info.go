@@ -1,15 +1,43 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
+	"os"
+	"path/filepath"
 
 	"github.com/spf13/cobra"
 )
 
-var infoCmd = &cobra.Command{
+var infoName string
+
+var info = &cobra.Command{
 	Use:   "info",
-	Short: "Show information about a project template",
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("[TODO] Show info about the template")
+	Short: "Show template info",
+	RunE: func(cmd *cobra.Command, args []string) error {
+		root, err := loadTemplateRoot()
+		if err != nil {
+			return err
+		}
+		cfgPath := filepath.Join(root, infoName+".json")
+		b, err := os.ReadFile(cfgPath)
+		if err != nil {
+			return err
+		}
+		var cfg map[string]string
+		json.Unmarshal(b, &cfg)
+
+		infoFile := filepath.Join(root, cfg["info"])
+		infoContent, err := os.ReadFile(infoFile)
+		if err != nil {
+			return err
+		}
+		fmt.Printf("%s : %s\n", infoName, string(infoContent))
+		return nil
 	},
+}
+
+func init() {
+	info.Flags().StringVar(&infoName, "name", "", "template name")
+	info.MarkFlagRequired("name")
 }
