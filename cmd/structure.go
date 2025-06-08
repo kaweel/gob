@@ -9,17 +9,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var structureName string
-
 var structure = &cobra.Command{
 	Use:   "struct",
 	Short: "Show template structure",
+	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		root, err := loadTemplateRoot()
 		if err != nil {
 			return err
 		}
-		cfgPath := filepath.Join(root, structureName+".json")
+		name := args[0]
+		cfgPath := filepath.Join(root, name+".json")
 		b, err := os.ReadFile(cfgPath)
 		if err != nil {
 			return err
@@ -35,9 +35,4 @@ var structure = &cobra.Command{
 		fmt.Printf("%s\n", string(structContent))
 		return nil
 	},
-}
-
-func init() {
-	structure.Flags().StringVar(&structureName, "name", "", "template name")
-	structure.MarkFlagRequired("name")
 }
